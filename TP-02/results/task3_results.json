@@ -1,0 +1,14 @@
+{
+    "Method": "Dask DataFrame",
+    "Block Size": "64 MiB",
+    "Total Rows": 27000000,
+    "Number of Partitions": 82,
+    "Global Mean": 154053794.83491623,
+    "Execution Time (s)": 152.97,
+    "Process RAM Before (MB)": 105.54,
+    "Process RAM After (MB)": 242.25,
+    "System RAM Before (%)": 75.4,
+    "System RAM After (%)": 70.5,
+    "Status": "Success",
+    "Error": null
+}

@@ -1,0 +1,11 @@
+{
+    "Method": "Standard Pandas",
+    "Total Rows": null,
+    "Execution Time (s)": 217.19,
+    "Process RAM Before (MB)": 78.25,
+    "Process RAM After (MB)": 131.85,
+    "System RAM Before (%)": 73.8,
+    "System RAM After (%)": 42.5,
+    "Status": "MemoryError",
+    "Error": "Insufficient memory to load the entire file."
+}

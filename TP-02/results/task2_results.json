@@ -1,0 +1,13 @@
+{
+    "Method": "Pandas Chunking",
+    "Chunk Size": 100000,
+    "Total Rows": 27000000,
+    "Global Sum": 8.318993685178456e+16,
+    "Global Mean": 140050889.8615962,
+    "Execution Time (s)": 276.93,
+    "Process RAM Before (MB)": 78.12,
+    "Peak Process RAM (MB)": 184.25,
+    "System RAM Before (%)": 47.0,
+    "System RAM After (%)": 44.8,
+    "Status": "Success"
+}
