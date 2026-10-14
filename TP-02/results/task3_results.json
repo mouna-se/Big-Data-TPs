@@ -4,11 +4,12 @@
     "Total Rows": 27000000,
     "Number of Partitions": 82,
     "Global Mean": 154053794.83491623,
-    "Execution Time (s)": 152.97,
-    "Process RAM Before (MB)": 105.54,
-    "Process RAM After (MB)": 242.25,
-    "System RAM Before (%)": 75.4,
-    "System RAM After (%)": 70.5,
+    "Execution Time (s)": 222.02,
+    "Process RAM Before (MB)": 105.45,
+    "Process RAM Peak (MB)": 1339.9,
+    "Process RAM After (MB)": 273.0,
+    "System RAM Before (%)": 86.6,
+    "System RAM After (%)": 71.3,
     "Status": "Success",
     "Error": null
 }

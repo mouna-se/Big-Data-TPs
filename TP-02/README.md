@@ -62,8 +62,8 @@ A technique that delays the execution of operations until their results are need
 | Method | Max RAM Utilization | Execution Speed |
 |---|---|---|
 | Standard Pandas | Failed to load the dataset (`MemoryError`) | N/A (OOM Error) |
-| Pandas Chunking | Low (Peak: 184.25 MB process RAM) | Moderate (276.93 s) |
-| Dask DataFrame | Final RAM: 242.25 MB (peak not measured) | Fast (152.97 s) |
+| Pandas Chunking | 184.25 MB  | Moderate (276.93 s) |
+| Dask DataFrame |  1339.9 MB  | Fast (152.97 s) |
 
 ### Benchmark Analysis
 
@@ -71,12 +71,9 @@ A technique that delays the execution of operations until their results are need
 - **Pandas Chunking:** Successfully processed the dataset in chunks, with a peak process RAM usage of 184.25 MB.
 - **Dask DataFrame:** Successfully processed all 27 million rows in 152.97 seconds, making it the fastest successful method in this experiment.
 
-Dask completed the processing approximately **44.8% faster** than Pandas Chunking, based on the recorded execution times.
+Dask completed the data processing faster than Pandas Chunking, demonstrating better execution time performance. However, Pandas Chunking used significantly less RAM, making it more memory-efficient for processing large datasets.
 
-Note that the memory measurements are not fully equivalent: peak RAM was recorded for Pandas Chunking, whereas only final RAM was recorded for Dask.
 
 ## 7. Conclusion
 
-Based on the recorded execution times, **Dask DataFrame is the preferred method for this experiment** because it successfully processed the complete dataset in the shortest time.
-
-Pandas Chunking is also a practical solution when processing large datasets with limited memory. Standard Pandas was unsuitable for this experiment because loading the entire dataset at once resulted in a `MemoryError`.
+In conclusion, Dask DataFrame provided the fastest execution time, while Pandas Chunking achieved better memory efficiency. Standard Pandas was unable to process the entire dataset due to a `MemoryError`. Therefore, Dask is preferable when speed is the priority, whereas Pandas Chunking is a better choice for systems with limited RAM.

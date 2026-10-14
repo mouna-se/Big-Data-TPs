@@ -1,9 +1,11 @@
+
 import dask
 import dask.dataframe as dd
 import pandas as pd
 import psutil
 import time
 import json
+import threading
 
 # File paths
 file_path = r"D:\csv\all_merged.csv"
@@ -15,7 +17,21 @@ ram_before = process.memory_info().rss / (1024 ** 2)
 system_ram_before = psutil.virtual_memory().percent
 start_time = time.time()
 
-peak_ram = ram_before
+# Peak RAM monitoring
+peak_ram = [ram_before]
+stop_monitoring = threading.Event()
+
+
+def monitor_memory():
+    while not stop_monitoring.is_set():
+        try:
+            current_ram = process.memory_info().rss / (1024 ** 2)
+            peak_ram[0] = max(peak_ram[0], current_ram)
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            break
+
+        stop_monitoring.wait(0.1)
+
 
 results = {
     "Method": "Dask DataFrame",
@@ -32,6 +48,13 @@ results = {
     "Status": None,
     "Error": None
 }
+
+# Start monitoring before processing
+monitor_thread = threading.Thread(
+    target=monitor_memory,
+    daemon=True
+)
+monitor_thread.start()
 
 try:
     # Load data using Dask
@@ -60,12 +83,12 @@ try:
 
     numeric_columns = df[numeric_cols]
 
-    # Build the lazy computation graph
+    # Build lazy computation tasks
     total_sum_task = numeric_columns.sum().sum()
     total_count_task = numeric_columns.count().sum()
     total_rows_task = df.map_partitions(len).sum()
 
-    # Execute computations using multiple threads
+    # Execute computations
     total_sum, total_count, total_rows = dask.compute(
         total_sum_task,
         total_count_task,
@@ -73,10 +96,7 @@ try:
         scheduler="threads"
     )
 
-    ram_after_compute = process.memory_info().rss / (1024 ** 2)
-    peak_ram = max(peak_ram, ram_after_compute)
-
-    # Calculate the global mean of numeric values
+    # Calculate global mean
     global_mean = (
         float(total_sum / total_count)
         if total_count > 0 else None
@@ -96,19 +116,25 @@ except Exception as e:
     print("Error:", results["Error"])
 
 finally:
+    # Stop monitoring and wait for the monitor thread
+    stop_monitoring.set()
+    monitor_thread.join()
+
+    # Final memory measurements
+    ram_after = process.memory_info().rss / (1024 ** 2)
+    peak_ram[0] = max(peak_ram[0], ram_after)
+
     results["Execution Time (s)"] = round(
         time.time() - start_time, 2
     )
-
-    ram_after = process.memory_info().rss / (1024 ** 2)
-    peak_ram = max(peak_ram, ram_after)
-
-    results["Process RAM Peak (MB)"] = round(peak_ram, 2)
+    results["Process RAM Peak (MB)"] = round(peak_ram[0], 2)
     results["Process RAM After (MB)"] = round(ram_after, 2)
     results["System RAM After (%)"] = psutil.virtual_memory().percent
 
+    # Save results to JSON
     with open(results_file, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=4, ensure_ascii=False)
 
-    print("\nResults saved to", results_file)
+    print("\nPeak Process RAM:", round(peak_ram[0], 2), "MB")
+    print("Results saved to", results_file)
     print(json.dumps(results, indent=4, ensure_ascii=False))
