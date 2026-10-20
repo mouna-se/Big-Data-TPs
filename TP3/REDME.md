@@ -4,7 +4,7 @@
 
 ---
 
-## 📊 Results & Dashboard Visualizations
+##  Results & Dashboard Visualizations
 
 ### 1. Key Performance Indicator (KPI Card)
 * **Current Value:** 2.30 Million.
@@ -27,7 +27,7 @@
 
 ---
 
-## 🎯 Conclusion (Findings Summary)
+##  Conclusion (Findings Summary)
 Based on the finalized interactive dashboard, the superstore achieved a robust overall revenue reaching a total of **2.30 Million** in sales. 
 
 Product category evaluation highlights that **Technology** stands out as the primary market driver, generating over **800k**, with **Phones and Chairs** acting as the highest-performing sub-categories at **300k** each. 
