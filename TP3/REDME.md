@@ -1,36 +1,37 @@
 # TP03: Interactive Data Analysis and Visualization with Power BI 
 
-**Dataset Source:** [Kaggle - Sample Superstore Dataset](https://www.kaggle.com/datasets/bravehart101/sample-supermarket-dataset)
+**Dataset Source:**(https://www.kaggle.com/datasets/bravehart101/sample-supermarket-dataset)
 
----
 
-##  Results & Dashboard Visualizations
+## Results:
+#  Key Performance Indicator (KPI Card)
+**Current Value:** 2.30 Million.
 
-### 1. Key Performance Indicator (KPI Card)
-* **Current Value:** 2.30 Million.
+# 2. Horizontal Bar Chart (Top Right)
+* **Visual Representation:** Represents **Total Sales by Category**.
+* **Components:** Compares high-level product segments: **Technology**, **Furniture**, and **Office Supplies**.
 
-### 2. Bar Chart
-* Represents **Total Sales by Category** to compare top-tier product segments.
+# 3. Vertical Column Chart (Top Left)
+* **Visual Representation:** Illustrates **Total Sales by Sub-Category**.
+* **Components:** Tracks granular product performance showing a descending ranking from highest items like **Phones** and **Chairs** down to the lowest items.
 
-### 3. Column Bar Chart
-* Illustrates **Total Sales by Sub-Category** for granular product performance tracking.
+# 4. Map Visualization (Bottom Left)
+* **Visual Representation:** Represents **Total Sales by Region** plotted across a geographic map.
+* **Components:** Displays regional performance categorized into **Central**, **East**, **South**, and **West** using color-coded bubbles mapped directly onto the United States.
 
-### 4. Bar Chart
-* Tracks **Total Sales by Region**.
+# 5. Horizontal Bar Chart (Bottom Right)
+* **Visual Representation:** Plots **Total profit by sub-category**.
+* **Components:** Tracks individual product profitability margins in a descending breakdown, highlighting highly profitable sub-categories like **Copiers** and **Phones** down to low-margin or losing items like **Machines**.
 
-### 5. Distribution Line Chart
-* Plots the continuous breakdown of **Total Sales by State**.
-* **Key Insight:** Uncovers high sales density heavily skewed toward **California and New York**, before descending into a long, flat tail across standard states.
+# 6. Interactive Slicers (Top Center)
+* **Visual Representation:** Filter selection cards designed for dynamic data drill-down.
+* **Components:** Features interactive checkboxes for **Ship Mode** (First Class, Same Day, Second Class, Standard Class) and **Segment** (Consumer, Corporate, Home Office) to update all visual elements on demand.
 
-### 6. Interactive Slicers 
-* **Components:** Features interactive filter cards for **Ship Mode** and Customer **Segment** to cross-examine and dynamically update all visual fields on demand.
 
----
+## Conclution:
+The **Technology** and **Furniture** categories lead total sales **due to** their higher unit prices compared to office supplies, with phones and chairs dominating within them **due to** high demand for corporate and office setups. 
 
-##  Conclusion (Findings Summary)
-Based on the finalized interactive dashboard, the superstore achieved a robust overall revenue reaching a total of **2.30 Million** in sales. 
+Despite high chair sales, copiers and phones outperformed them in profitability **due to** their high net profit margins, whereas chairs dropped to sixth place and machines bottomed the list **due to** their low actual profit margins relative to their high sales volume. 
 
-Product category evaluation highlights that **Technology** stands out as the primary market driver, generating over **800k**, with **Phones and Chairs** acting as the highest-performing sub-categories at **300k** each. 
-
-Geographically, the **West** region secures the strongest market presence, contributing the largest revenue share at over **700k**. Furthermore, the distribution curve reveals a steep concentration of sales within top-tier states like **California and New York**, before dropping sharply into a long, flat tail that represents lower-performing local markets across other remaining territories.
+Geographically, sales are heavily concentrated in the West and East regions (such as California and New York) **due to** dense population centers and large corporate headquarters, while performance weakens and scatters in the Central and South regions **due to** fewer commercial hubs in the current data.
 
